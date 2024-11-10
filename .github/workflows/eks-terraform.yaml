@@ -35,7 +35,9 @@ jobs:
       # Step 4: Terraform Init
       - name: Terraform Init
         working-directory: ./terraform
-        run: terraform init --upgrade
+        run: |
+          rm -rf *
+          terraform init
 
       # Step 5: Terraform Apply (approve plan automatically)
       - name: Terraform Apply
