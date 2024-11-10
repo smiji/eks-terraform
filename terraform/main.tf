@@ -20,9 +20,9 @@ module "vpc" {
 
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
-  version         = "18.0.0"
+  version         = "20.28.0"
   cluster_name    = var.cluster_name
-  cluster_version = "1.24"
+  cluster_version = "1.30"
   subnet_ids         = module.vpc.private_subnets
   vpc_id          = module.vpc.vpc_id
 
