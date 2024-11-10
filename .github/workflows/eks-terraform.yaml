@@ -50,7 +50,7 @@ jobs:
       - name: Update kubeconfig
         run: |
           aws sts get-caller-identity 
-          aws eks update-kubeconfig --name eks-cluster-name --region eu-west-2
+          aws eks update-kubeconfig --name java-webapp --region eu-west-2
           kubectl config view --minify
           kubectl svc
           
