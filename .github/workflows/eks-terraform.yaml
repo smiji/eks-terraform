@@ -52,7 +52,7 @@ jobs:
           aws sts get-caller-identity 
           aws eks update-kubeconfig --name java-webapp --region eu-west-2
           kubectl config view --minify
-          kubectl svc
+          kubectl get svc
           
       # Step 7: Deploy to EKS
       - name: Deploy to EKS
