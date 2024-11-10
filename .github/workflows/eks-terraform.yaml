@@ -36,7 +36,6 @@ jobs:
       - name: Terraform Init
         working-directory: ./terraform
         run: |
-          rm -rf *
           terraform init
 
       # Step 5: Terraform Apply (approve plan automatically)
