@@ -24,17 +24,15 @@ module "eks" {
   version         = "18.0.0"
   cluster_name    = var.cluster_name
   cluster_version = "1.24"
-  subnets         = module.vpc.private_subnets
+  subnet_ids         = module.vpc.private_subnets
   vpc_id          = module.vpc.vpc_id
 
-  node_groups = {
+  eks_managed_node_groups = {
     eks_nodes = {
       desired_capacity = 2
       max_capacity     = 3
       min_capacity     = 1
-
       instance_type = "t2.micro"
-
       tags = {
         Name = "eks-node"
       }
