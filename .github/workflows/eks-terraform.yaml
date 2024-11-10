@@ -40,11 +40,11 @@ jobs:
           terraform init
 
       # Step 5: Terraform Apply (approve plan automatically)
-      - name: Terraform Apply
+      - name: Terraform Destroy
         working-directory: ./terraform
         env:
           TF_VAR_region: ${{ secrets.AWS_REGION }}
-        run: terraform apply -auto-approve
+        run: terraform destroy -auto-approve
 
       # Step 6: Update kubeconfig
       # - name: Update kubeconfig
