@@ -49,8 +49,9 @@ jobs:
       #Step 6: Update kubeconfig
       - name: Update kubeconfig
         run: |
-          aws eks update-kubeconfig --name java-webapp --region ${{ secrets.AWS_REGION }}
-
+          aws eks update-kubeconfig --name java-webapp --region eu-west-2
+          kubectl apply -f k8/deployment.yaml
+          kubectl apply -f k8/service.yaml
       # Step 7: Deploy to EKS
       - name: Deploy to EKS
         run: |
