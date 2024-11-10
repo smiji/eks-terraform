@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: java-webapp
-          image: <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<ECR_REPOSITORY>:latest
+          image: 976193251196.dkr.ecr.eu-west-2.amazonaws.com/web/java-images:11767986597-1
           ports:
             - containerPort: 8080
