@@ -49,8 +49,8 @@ jobs:
       #Step 6: Update kubeconfig
       - name: Update kubeconfig
         run: |
-          aws sts get-caller-identity --profile eks-profile
-          aws eks update-kubeconfig --name eks-cluster-name --region aws-region --profile eks-profile
+          aws sts get-caller-identity 
+          aws eks update-kubeconfig --name eks-cluster-name --region eu-west-2
           kubectl config view --minify
           kubectl svc
           
