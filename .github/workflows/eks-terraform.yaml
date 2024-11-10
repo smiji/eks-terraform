@@ -30,12 +30,13 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.10  # Use your required Terraform version
+          terraform_version: 1.3.2  # Use your required Terraform version
 
       # Step 4: Terraform Init
       - name: Terraform Init
         working-directory: ./terraform
         run: |
+          terraform version
           terraform init
 
       # Step 5: Terraform Apply (approve plan automatically)
