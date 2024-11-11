@@ -33,15 +33,7 @@ module "eks" {
   subnet_ids         = module.vpc.private_subnets
   vpc_id          = module.vpc.vpc_id
 
-  eks_managed_node_groups = {
-    eks_nodes = {
-      desired_capacity = 2
-      max_capacity     = 3
-      min_capacity     = 1
-      instance_type = "t2.micro"
-     
-    }
-  }
+  
 }
 
 output "cluster_name" {
