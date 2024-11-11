@@ -44,7 +44,13 @@ jobs:
         working-directory: ./terraform
         env:
           TF_VAR_region: ${{ secrets.AWS_REGION }}
-        run: terraform destroy -auto-approve
+          run: terraform apply -auto-approve
+      #Step 6: Update kubeconfig
+      - name: Update kubeconfig
+        run: |
+          aws eks update-kubeconfig --name java-webapp --region eu-west-2
+          kubectl get svc 
+          kubect get nodes -A
 
       # #Step 6: Update kubeconfig
       # - name: Update kubeconfig
