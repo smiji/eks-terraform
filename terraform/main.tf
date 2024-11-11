@@ -8,7 +8,7 @@ provider "kubernetes" {
     command     = "aws"
     # This requires the awscli to be installed locally where Terraform is executed
     args = ["eks", "get-token", "--cluster-name", module.eks.cluster_id]
-  }              = var.cluster_id.token
+  }
 }
 
 #EKS Cluster 
