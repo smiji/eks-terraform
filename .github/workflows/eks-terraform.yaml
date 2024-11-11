@@ -17,7 +17,9 @@ jobs:
       # Step 1: Check out the repository
       - name: Checkout repository
         uses: actions/checkout@v3
-
+      # Step 2: Yaml validate
+      - name: json-yaml-validate
+        uses: GrantBirki/json-yaml-validate@v3.2.1
       # Step 2: Set up AWS credentials
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
