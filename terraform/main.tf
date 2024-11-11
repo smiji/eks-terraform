@@ -54,10 +54,13 @@ output "aws_region" {
   value = var.region
 }
 module "eks_auth" {
-  source = "aidanmelen/eks-auth/aws"
-  eks    = module.eks
+  source  = "terraform-aws-modules/eks/aws//modules/aws-auth"
+  version = "~> 20.0"
 
-   map_users = [
+  manage_aws_auth_configmap = true
+
+
+   aws_auth_users = [
     {
       userarn  = "arn:aws:iam::976193251196:user/tf_user_sj"
       username = "tf-user-sj"
