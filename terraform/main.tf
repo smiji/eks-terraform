@@ -51,3 +51,15 @@ output "cluster_name" {
 output "aws_region" {
   value = var.region
 }
+module "eks_auth" {
+  source = "aidanmelen/eks-auth/aws"
+  eks    = module.eks
+
+   map_users = [
+    {
+      userarn  = "arn:aws:iam::976193251196:user/tf_user_sj"
+      username = "tf-user-sj"
+      groups   = ["system:masters"]
+    }
+  ]
+}
