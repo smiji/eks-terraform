@@ -35,24 +35,6 @@ module "eks" {
   subnet_ids         = module.vpc.private_subnets
   vpc_id          = module.vpc.vpc_id
   cluster_endpoint_public_access  = true
-  enable_cluster_creator_admin_permissions = true
-  access_entries = {
-    # One access entry with a policy associated
-    user_access = {
-      principal_arn     = "arn:aws:iam::976193251196:user/tf_user_sj"
-
-      policy_associations = {
-        user_access = {
-          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy"
-          access_scope = {
-            namespaces = ["default","kube-system"]
-            type       = "namespace"
-          }
-        }
-      }
-    }
-  }
-
     eks_managed_node_groups = {
     eks_node = {
       # Starting on 1.30, AL2023 is the default AMI type for EKS managed node groups
