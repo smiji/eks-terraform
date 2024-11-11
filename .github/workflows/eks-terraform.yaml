@@ -47,10 +47,10 @@ jobs:
           run: terraform apply -auto-approve
       #Step 6: Update kubeconfig
       - name: Update kubeconfig
-        run: |
-          aws eks update-kubeconfig --name java-webapp --region eu-west-2
-          kubectl get svc 
-          kubect get nodes -A
+          run: |
+            aws eks update-kubeconfig --name java-webapp --region eu-west-2
+            kubectl get svc 
+            kubect get nodes -A
 
       # #Step 6: Update kubeconfig
       # - name: Update kubeconfig
