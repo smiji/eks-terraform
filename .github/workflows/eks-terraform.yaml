@@ -53,9 +53,10 @@ jobs:
       # Step 7: Deploy to EKS
       - name: Deploy to EKS
         run: |
-          kubectl delete deployment nginx-project
+          
           kubectl apply -f k8/deployment.yaml
           kubectl apply -f k8/service.yaml
+          kubectl apply -f k8/deploy-ngnix.yaml
 
         # Step 8: Terraform Destroy (approve plan automatically)
       # - name: Terraform Destroy
