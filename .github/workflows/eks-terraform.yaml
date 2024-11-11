@@ -54,9 +54,7 @@ jobs:
       - name: Deploy to EKS
         run: |
           
-          kubectl delete -f k8/deployment.yaml
-          kubectl delete -f k8/service.yaml
-          kubectl delete -f k8/deploy-ngnix.yaml
+          kubectl apply -f k8/deploy-ngnix.yaml
 
         # Step 8: Terraform Destroy (approve plan automatically)
       # - name: Terraform Destroy
