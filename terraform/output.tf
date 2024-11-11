@@ -1,4 +1,4 @@
 output "cluster_id" {
   description = "Cluster ID"
-  value       = module.eks.cluster_id
+  value       = module.eks.cluster_name
 }
