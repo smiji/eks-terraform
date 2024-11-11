@@ -44,7 +44,7 @@ jobs:
         working-directory: ./terraform
         env:
           TF_VAR_region: ${{ secrets.AWS_REGION }}
-        run: terraform apply -auto-approve
+        run: terraform delete -auto-approve
 
       # #Step 6: Update kubeconfig
       # - name: Update kubeconfig
