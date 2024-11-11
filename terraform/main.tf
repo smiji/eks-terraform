@@ -2,6 +2,13 @@
 provider "aws" {
   region = var.region
 }
+terraform {
+  backend "s3" {
+    bucket = "terraform-state-11"
+    key    = "terraform/eks1"
+    region = "eu-west-2"
+  }
+}
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
