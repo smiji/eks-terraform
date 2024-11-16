@@ -1,6 +1,15 @@
+
+
 #EKS Cluster 
 provider "aws" {
   region = var.region
+}
+terraform {
+  backend "s3" {
+    bucket = "terraform-state-11"
+    key    = "terraform/eks2"
+    region = "eu-west-2"
+  }
 }
 
 module "vpc" {
@@ -25,21 +34,22 @@ module "eks" {
   cluster_version = "1.31"
   subnet_ids         = module.vpc.private_subnets
   vpc_id          = module.vpc.vpc_id
+  cluster_endpoint_public_access  = true
+  authentication_mode = "API"
+  #node groups
+    eks_managed_node_groups = {
+    eks_node = {
+      # Starting on 1.30, AL2023 is the default AMI type for EKS managed node groups
+      instance_types = ["t2.micro"]
 
-  eks_managed_node_groups = {
-    eks_nodes = {
-      desired_capacity = 2
-      max_capacity     = 3
-      min_capacity     = 1
-      instance_type = "t2.micro"
-     
+      min_size     = 1
+      max_size     = 1
+      desired_size = 1
     }
   }
+  
 }
 
-output "cluster_name" {
-  value = module.eks.cluster_id
-}
 
 output "aws_region" {
   value = var.region
