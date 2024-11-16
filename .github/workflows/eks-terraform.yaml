@@ -47,20 +47,20 @@ jobs:
       #   run: terraform apply -auto-approve
 
       #Step 6: Update kubeconfig
-      - name: Update kubeconfig
-        run: |
-          aws eks update-kubeconfig --name java-webapp-cluster --region ${{ secrets.AWS_REGION }}
+      # - name: Update kubeconfig
+      #   run: |
+      #     aws eks update-kubeconfig --name java-webapp-cluster --region ${{ secrets.AWS_REGION }}
 
-      # Step 7: Deploy to EKS
-      - name: Deploy to EKS
-        run: |
-          kubectl apply -f k8/deployment.yaml
-          kubectl apply -f k8/service.yaml
+      # # Step 7: Deploy to EKS
+      # - name: Deploy to EKS
+      #   run: |
+      #     kubectl apply -f k8/deployment.yaml
+      #     kubectl apply -f k8/service.yaml
 
         # Step 8: Terraform Destroy (approve plan automatically)
-      # - name: Terraform Destroy
-      #   working-directory: ./terraform
-      #   env:
-      #     TF_VAR_region: ${{ secrets.AWS_REGION }}
-      #   run: terraform destroy -auto-approve
+      - name: Terraform Destroy
+        working-directory: ./terraform
+        env:
+          TF_VAR_region: ${{ secrets.AWS_REGION }}
+        run: terraform destroy -auto-approve
 
